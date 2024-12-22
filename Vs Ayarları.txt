@@ -1,0 +1,5 @@
+WinMerger
+D:\UyumProjects\Tools\WinMergeOpener\WinMergeOpener\bin\Debug\WinMergeOpener.exe
+\menu $(ItemPath) $(CurLine) $(CurCol) $(ProjectDir)$(ProjectFileName) 
+
+D:\UyumProjects\Tools\WinMergeOpener\WinMergeOpener\bin\Debug

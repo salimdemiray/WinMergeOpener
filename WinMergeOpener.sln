@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1267
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinMergeOpener", "WinMergeOpener\WinMergeOpener.csproj", "{74316835-2C25-42D1-A8D9-D2D443E8AEFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MergerTest", "MergerTest\MergerTest.csproj", "{D521FADB-DA20-4477-BD96-8B61EFE1A8A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74316835-2C25-42D1-A8D9-D2D443E8AEFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74316835-2C25-42D1-A8D9-D2D443E8AEFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74316835-2C25-42D1-A8D9-D2D443E8AEFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74316835-2C25-42D1-A8D9-D2D443E8AEFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D521FADB-DA20-4477-BD96-8B61EFE1A8A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D521FADB-DA20-4477-BD96-8B61EFE1A8A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D521FADB-DA20-4477-BD96-8B61EFE1A8A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D521FADB-DA20-4477-BD96-8B61EFE1A8A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26B946B9-3E59-48F2-AA60-E903AE7998D9}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,9 @@
+MergerTest/bin/*
+MergerTest/obj/*
+WinMergeOpener/bin/*
+WinMergeOpener/obj/*
+*.rar
+.vs/*
+Backup/*
+bin/*
+packages/*

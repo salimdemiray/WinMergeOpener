@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Main Trunk="trunk" WinMergePath="C:\Program Files\WinMerge\WinMergeU.exe" NotePadPath="C:\Program Files\Notepad++\notepad++.exe" BranchPath="C:\Uyumsoft\UyumProjects\Senfoni\branches\"  >
+  <Version Name="Testing-60" Path="branches\release.1.0.60.0" />
+  <Version Name="Live" Path="branches\release.1.0.60.0.Live" />    
+  <Version Name="Erp.4.2109" Path="branches\Erp.4.2109" />      
+  <Version Name="Eko.1.2304" Path="branches\Eko.1.2304" />   
+  <Version Name="Smmm.2.2211" Path="branches\Smmm.2.2211" />  
+
+  <Task Name="Version File" Yol="{{N}}" Arg="C:\Uyumsoft\UyumTools\WinMergeOpener\WinMergeOpener\bin\Debug\Versions.xml" />
+  <Task Name="TnsName" Yol="{{N}}" Arg="C:\app\product\11.2.0\client32_1\network\admin\tnsnames.ora" />
+  <Task Name="GlobalEnum" Yol="{{N}}" Arg="{VersionPath}\Senfoni\Modules\GNL\GNL\Enum\GlobalEnums.cs" /> 
+  <Task Name="Wm GlobalEnum[,3,4]" Yol="{{M}}" Arg="{VersionPath}\Senfoni\Modules\GNL\GNL\Enum\GlobalEnums.cs" /> 
+  <Task Name="Salim Eski Test WebSetting" Yol="{{N}}" Arg="C:\Uyumsoft\UyumProjects\SalimTestWebSettings.Config" /> 
+   <Task Name="CustomPrg Aç" Yol="c:\Windows\explorer.exe" Arg="{VersionPath}\Senfoni\Senfoni\Senfoni\CustomPrg" /> 
+  
+</Main>
+
