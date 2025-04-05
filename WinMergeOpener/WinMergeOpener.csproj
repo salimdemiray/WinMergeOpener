@@ -75,6 +75,10 @@
   <ItemGroup>
     <Compile Include="ArgumentParam.cs" />
     <Compile Include="Command\CleanFile.cs" />
+    <Compile Include="Command\DynamicScreen\ChangeZzzProjectFile.cs" />
+    <Compile Include="Command\DynamicScreen\DynamicCopyToZzzProject.cs" />
+    <Compile Include="Command\DynamicScreen\DynamicScreenCommmand.cs" />
+    <Compile Include="Command\Tools\CsFileCleaner.cs" />
     <Compile Include="Command\DeleteQuickFiles.cs" />
     <Compile Include="Command\FileChanger\CsFileChanger.cs" />
     <Compile Include="Command\FileChanger\CS\LoadCollectionFromCollType_GlobalObj_Load_Ops.cs" />
@@ -89,12 +93,14 @@
     <Compile Include="Command\RunTaskCommand.cs" />
     <Compile Include="Command\SortProjectFile.cs" />
     <Compile Include="Command\UyumCommand.cs" />
+    <Compile Include="Command\Tools\XmlFileCleaner.cs" />
     <Compile Include="Command\_CommandFactory.cs" />
     <Compile Include="ConsoleParamReader.cs" />
     <Compile Include="ConsoleTool.cs" />
     <Compile Include="MenuPrintOperation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VersionFileRunOperations.cs" />
     <Compile Include="VersionManager.cs" />
   </ItemGroup>
   <ItemGroup>

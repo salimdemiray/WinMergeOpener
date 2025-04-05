@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Linq;
-
 
 namespace WinMergeOpener.Command
 {
     public partial class UyumCommand : CommandBase
     {
-        public const string MenuText = "uy_in,uy_tb,pg,dt,st,bk,ps";
+        public const string MenuText = "uy_in,uy_tb,pg,dt,st,bk,ps,sl";
         //const string branhesPaths = @"C:\Uyumsoft\UyumProjects\Senfoni\branches\";
         ArgumentParam ArgParam;
 
@@ -68,11 +67,21 @@ namespace WinMergeOpener.Command
             {
                 CollectionJoinClean(ArgParam);
             }
+            else if (ConsoleParam.Command.Equals("uy_sl", StringComparison.InvariantCultureIgnoreCase))
+            {
+                OpenSvnLog(ArgParam);
+            }
+        }
+
+        static void OpenSvnLog(ArgumentParam argParam)
+        {
+            var fl = argParam.FileName;
+            Process.Start("TortoiseProc.exe", string.Format("/command:log /path:\"{0}\"", fl));
         }
 
         string GetRunClassProbHelperText(ModuleResponse r, string operationType)
         {
-            Assembly asmHrm = LoadHrmAms(ArgParam,_VersionManager);
+            Assembly asmHrm = LoadHrmAms(ArgParam, _VersionManager);
             var typeCommonOps = asmHrm.GetType("HRM.CommonOps");
             var typeEnum = typeCommonOps.GetNestedType("ReadClassPropertiesHelperType");
             var typeClass = GetOtherType(r);
@@ -103,11 +112,12 @@ namespace WinMergeOpener.Command
             col1.AddHeaderAndValue("uy_is", "Class init string & ToString ", "[1]");
             col2.AddHeaderAndValue("uy_ps", "Proje Dosyaları Sırala", "[1]");
             col2.AddHeaderAndValue("uy_cj", "Col. Join Temizleme", "[1]");
+            col1.AddHeaderAndValue("uy_sl", "Svn History", "[1]");
         }
 
         Type GetOtherType(ModuleResponse r)
         {
-            Assembly asmOth = LoadAsm(ArgParam, r.ModuleName,_VersionManager);
+            Assembly asmOth = LoadAsm(ArgParam, r.ModuleName, _VersionManager);
             return asmOth.GetType(r.GetAsm);
         }
 
@@ -137,7 +147,7 @@ namespace WinMergeOpener.Command
             }
             else
             {
-                Assembly asmOth = LoadAsm(ArgParam, Module,_VersionManager);
+                Assembly asmOth = LoadAsm(ArgParam, Module, _VersionManager);
                 t1 = asmOth.GetType(Module + "." + TypeName);
             }
 
@@ -195,7 +205,7 @@ namespace WinMergeOpener.Command
 
         #endregion
 
-        public ModuleResponse GetFileModule(string FileName)
+        public static ModuleResponse GetFileModule(string FileName)
         {
             var res = new ModuleResponse();
             if (!File.Exists(FileName)) return res;
@@ -233,7 +243,7 @@ namespace WinMergeOpener.Command
         }
 
         static Assembly LoadAsm(ArgumentParam ArgParam, string ModName, VersionManager _VersionManager)
-        {            
+        {
 
             var pt = _VersionManager.BranchPath;
 
@@ -253,12 +263,12 @@ namespace WinMergeOpener.Command
         }
         #endregion
 
-        void ProjectSort(ArgumentParam argParam)
+        static void ProjectSort(ArgumentParam argParam)
         {
             new SortProjectFile(argParam).Run();
         }
 
-        void CollectionJoinClean(ArgumentParam argParam)
+        static void CollectionJoinClean(ArgumentParam argParam)
         {
             if (!argParam.FileName.Contains("Collection.cs")) return;
 

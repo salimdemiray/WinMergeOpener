@@ -11,6 +11,7 @@ using System.Xml.Schema;
 using System.Xml.XPath;
 using System.Reflection;
 using System.Xml.Linq;
+using System.Net.NetworkInformation;
 
 namespace WinMergeOpener
 {
@@ -36,7 +37,7 @@ namespace WinMergeOpener
      */
 
 
-    partial class Program
+    public partial class Program
     {
         public const string tr = "trunk";
         //public const string wm = @"C:\Program Files (x86)\WinMerge\WinMergeU.exe";
@@ -195,7 +196,7 @@ namespace WinMergeOpener
             Console.ReadLine();
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             //TestRead();
             //return;
@@ -211,6 +212,14 @@ namespace WinMergeOpener
                 ConsoleTool.WriteError("Hata", err.Message);
                 Console.ReadLine();
             }
+        }
+
+        public static void TestCommand(string LineCommand,string[] args)
+        {
+            var argParam = new ArgumentParam(args);                        
+            var ops = new Operation();
+
+            ops.InnerRunOperation(argParam, LineCommand);
         }
 
 
@@ -251,7 +260,11 @@ namespace WinMergeOpener
                 MenuPrinter(argParam);
 
                 string cmdListText = Console.ReadLine().Trim();
+                InnerRunOperation(argParam, cmdListText);
+            }
 
+            public void InnerRunOperation(ArgumentParam argParam, string cmdListText)
+            {
                 ConsoleParamReader consoleParamReader = new ConsoleParamReader();
 
                 var commands = cmdListText.Split('|').Select(n => n.Trim());

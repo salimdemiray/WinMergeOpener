@@ -111,6 +111,7 @@
     <Compile Include="add1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ConsoleParamTest.cs" />
+    <Compile Include="LoadTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WinMergeOpener\WinMergeOpener.csproj">
