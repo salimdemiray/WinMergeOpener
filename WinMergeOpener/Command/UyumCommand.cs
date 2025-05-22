@@ -111,8 +111,11 @@ namespace WinMergeOpener.Command
             col2.AddHeaderAndValue("uy_bk", "Bak Dosyası Sil", "[1]");
             col1.AddHeaderAndValue("uy_is", "Class init string & ToString ", "[1]");
             col2.AddHeaderAndValue("uy_ps", "Proje Dosyaları Sırala", "[1]");
-            col2.AddHeaderAndValue("uy_cj", "Col. Join Temizleme", "[1]");
+
             col1.AddHeaderAndValue("uy_sl", "Svn History", "[1]");
+            col2.AddHeaderAndValue("uy_cj", "Col. Join Temizleme", "[1]");
+            col1.AddHeaderAndValue("zz_cp", "Derlenecek proje Dosyalarını ZZ ye Kopyala", "[1]");
+            col2.AddHeaderAndValue("zz_dl", "Kaynak Dosyaları Sil", "[1]");
         }
 
         Type GetOtherType(ModuleResponse r)

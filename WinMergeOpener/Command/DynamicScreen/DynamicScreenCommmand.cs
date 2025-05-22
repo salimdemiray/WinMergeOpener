@@ -16,6 +16,18 @@ namespace WinMergeOpener.Command
         {
             if (ConsoleParam.Command.Equals("zz_cp", StringComparison.InvariantCultureIgnoreCase))
                 CopyFileEvent(ArgParam);
+
+            if (ConsoleParam.Command.Equals("zz_dl", StringComparison.InvariantCultureIgnoreCase))
+                DeleteOldFileEvent(ArgParam);
+        }
+
+        void DeleteOldFileEvent(ArgumentParam ArgParam)
+        {
+            string fullProjectMasterDirectory = FindProjectMasterDirectoy(ArgParam);
+            var PathDynamicCompledCode = @"Senfoni\Senfoni\Senfoni\CustomPrg\SOURCE";
+            var DirectoryOfSourceCodes = Path.Combine(fullProjectMasterDirectory, PathDynamicCompledCode);
+
+            DynamicCopyToZzzProject.DeleteDirectoryFilesWithSubDirectort(DirectoryOfSourceCodes);
         }
 
         static string FindZZZProjectFilePath(string fullProjectMasterDirectory)

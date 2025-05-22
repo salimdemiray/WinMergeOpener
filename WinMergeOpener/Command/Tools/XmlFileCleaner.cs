@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Xml;
 
 namespace WinMergeOpener.Command.Tools
 {
@@ -20,6 +21,7 @@ namespace WinMergeOpener.Command.Tools
                 fileContent = ReplaceTrueFalseValues(fileContent);
                 fileContent = RemoveUnnecessaryAttributes(fileContent);
                 fileContent = CleanExtraSpaces(fileContent);
+                fileContent = FormatXml(fileContent);
 
                 File.WriteAllText(sourceFile, fileContent, Encoding.UTF8);
             }
@@ -29,13 +31,13 @@ namespace WinMergeOpener.Command.Tools
             }
         }
 
-        private static string ReplaceTrueFalseValues(string content)
+        static string ReplaceTrueFalseValues(string content)
         {
             return content.Replace("\"True\"", "\"true\"")
                           .Replace("\"False\"", "\"false\"");
         }
 
-        private static string RemoveUnnecessaryAttributes(string content)
+        static string RemoveUnnecessaryAttributes(string content)
         {
             return content.Replace(" Focused=\"true\"", "")
                           .Replace(" ControlEnabled=\"true\"", "")
@@ -57,12 +59,35 @@ namespace WinMergeOpener.Command.Tools
                           .Replace("DefaultValue=\"\"", "");
         }
 
-        private static string CleanExtraSpaces(string content)
+        static string CleanExtraSpaces(string content)
         {
             content = Regex.Replace(content, @"([\w\""])([ ]{2,25})(\w)", "$1 $3");
             content = Regex.Replace(content, @"(""[ ]+)(\/\>)", "\"$2");
             content = Regex.Replace(content, @"([\""\w])([ ]+)(\>)", "$1$3");
             return content;
+        }
+
+        static string FormatXml(string xml)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xml); // XML stringini parse eder
+
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                Indent = true,
+                IndentChars = " ", // 2 boþluk
+                NewLineChars = "\r\n",
+                NewLineHandling = NewLineHandling.Replace,                
+                Encoding = System.Text.Encoding.UTF8,
+                OmitXmlDeclaration = false // <?xml ... ?> satýrý kalsýn mý?
+            };
+
+            using (var stringWriter = new StringWriter())
+            using (var xmlWriter = XmlWriter.Create(stringWriter, settings))
+            {
+                doc.Save(xmlWriter);
+                return stringWriter.ToString(); // Formatlanmýþ XML stringi
+            }
         }
     }
 }

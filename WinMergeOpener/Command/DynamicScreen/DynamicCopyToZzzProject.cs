@@ -37,9 +37,16 @@ namespace WinMergeOpener.Command.DynamicScreen
 
 
 
-        static void DeleteDirectoryFiles(string targetDirectory)
+        public static void DeleteDirectoryFiles(string targetDirectory)
         {
             var willDeletedFiles = Directory.GetFiles(targetDirectory);
+
+            foreach (var deleteFile in willDeletedFiles) File.Delete(deleteFile);
+        }
+
+        public static void DeleteDirectoryFilesWithSubDirectort(string targetDirectory)
+        {
+            var willDeletedFiles = Directory.GetFiles(targetDirectory, "*.*", SearchOption.AllDirectories);
 
             foreach (var deleteFile in willDeletedFiles) File.Delete(deleteFile);
         }
